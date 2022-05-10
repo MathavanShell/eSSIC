@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<e:eMosWF xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:e="clr-namespace:eSSIC;assembly=eSSIC.Core" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>ADSearch</AssemblyReference>
+      <AssemblyReference>AjaxControlToolkit</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>PdfSharp</AssemblyReference>
+      <AssemblyReference>PdfSharp.Charting</AssemblyReference>
+      <AssemblyReference>System.Web.DynamicData</AssemblyReference>
+      <AssemblyReference>System.Web.Entity</AssemblyReference>
+      <AssemblyReference>System.Web.ApplicationServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.DataAnnotations</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Web.Extensions</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Web</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Configuration</AssemblyReference>
+      <AssemblyReference>System.Web.Services</AssemblyReference>
+      <AssemblyReference>System.EnterpriseServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>eSSIC.Core</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <e:eMosWF.Implementation>
+    <Sequence>
+      <Sequence.Variables>
+        <Variable x:TypeArguments="p:CorrelationHandle" x:Name="__ReferenceID0" Name="__handle1" />
+        <Variable x:TypeArguments="x:Int32" Name="Operand1" />
+        <Variable x:TypeArguments="x:Int32" Name="Operand2" />
+        <Variable x:TypeArguments="x:String" Name="Operation" />
+      </Sequence.Variables>
+      <p:Receive x:Name="__ReferenceID5" OperationName="Calc" ServiceContractName="ICalc">
+        <p:Receive.CorrelationInitializers>
+          <p:RequestReplyCorrelationInitializer>
+            <p:RequestReplyCorrelationInitializer.CorrelationHandle>
+              <InArgument x:TypeArguments="p:CorrelationHandle">
+                <VariableValue x:TypeArguments="p:CorrelationHandle" Variable="{x:Reference __ReferenceID0}" />
+              </InArgument>
+            </p:RequestReplyCorrelationInitializer.CorrelationHandle>
+          </p:RequestReplyCorrelationInitializer>
+        </p:Receive.CorrelationInitializers>
+        <p:ReceiveParametersContent>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="Para1">
+            <mca:CSharpReference x:TypeArguments="x:Int32">Operand1</mca:CSharpReference>
+          </OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="Para2">
+            <mca:CSharpReference x:TypeArguments="x:Int32">Operand2</mca:CSharpReference>
+          </OutArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="Mode">
+            <mca:CSharpReference x:TypeArguments="x:String">Operation</mca:CSharpReference>
+          </OutArgument>
+        </p:ReceiveParametersContent>
+      </p:Receive>
+      <StateMachine DisplayName="CalcStateWF">
+        <StateMachine.InitialState>
+          <State x:Name="__ReferenceID2" DisplayName="Initiate">
+            <State.Transitions>
+              <Transition DisplayName="add">
+                <Transition.Condition>
+                  <mca:CSharpValue x:TypeArguments="x:Boolean">Operation == "add"</mca:CSharpValue>
+                </Transition.Condition>
+                <Transition.To>
+                  <State x:Name="__ReferenceID3" DisplayName="AddState">
+                    <State.Entry>
+                      <Assign>
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">
+                            <mca:CSharpReference x:TypeArguments="x:String">Result</mca:CSharpReference>
+                          </OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String">(Operand1 + Operand2).ToString()</mca:CSharpValue>
+                          </InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </State.Entry>
+                    <State.Transitions>
+                      <Transition DisplayName="T4">
+                        <Transition.To>
+                          <State x:Name="__ReferenceID1" DisplayName="FinalState" IsFinal="True" />
+                        </Transition.To>
+                      </Transition>
+                    </State.Transitions>
+                  </State>
+                </Transition.To>
+              </Transition>
+              <Transition DisplayName="multiply">
+                <Transition.Condition>
+                  <mca:CSharpValue x:TypeArguments="x:Boolean">Operation == "multiply"</mca:CSharpValue>
+                </Transition.Condition>
+                <Transition.To>
+                  <State x:Name="__ReferenceID4" DisplayName="MultiplyState">
+                    <State.Entry>
+                      <Assign>
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">
+                            <mca:CSharpReference x:TypeArguments="x:String">Result</mca:CSharpReference>
+                          </OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String">(Operand1 * Operand2).ToString()</mca:CSharpValue>
+                          </InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </State.Entry>
+                    <State.Transitions>
+                      <Transition DisplayName="T3" To="{x:Reference __ReferenceID1}" />
+                    </State.Transitions>
+                  </State>
+                </Transition.To>
+              </Transition>
+            </State.Transitions>
+          </State>
+        </StateMachine.InitialState>
+        <x:Reference>__ReferenceID2</x:Reference>
+        <x:Reference>__ReferenceID3</x:Reference>
+        <x:Reference>__ReferenceID4</x:Reference>
+        <x:Reference>__ReferenceID1</x:Reference>
+        <StateMachine.Variables>
+          <Variable x:TypeArguments="x:Int32" Name="Operand1" />
+          <Variable x:TypeArguments="x:Int32" Name="Operand2" />
+          <Variable x:TypeArguments="x:String" Name="Operation" />
+        </StateMachine.Variables>
+      </StateMachine>
+      <p:SendReply Request="{x:Reference __ReferenceID5}" DisplayName="SendReplyToReceive">
+        <p:SendMessageContent>
+          <InArgument x:TypeArguments="x:String">
+            <mca:CSharpValue x:TypeArguments="x:String">Result</mca:CSharpValue>
+          </InArgument>
+        </p:SendMessageContent>
+      </p:SendReply>
+      <sads:DebugSymbol.Symbol>dzhDOlxVc2Vyc1xEQVZFTi5DSEFJXHNvdXJjZVxyZXBvc1xlU1NJQ1xlU1NJQ1xlTW9zV0YueGFtbBU/A60BDgIBAUYFWxECAWRcBaQBFAIBDqUBBasBEwIBAlgLWFoCAXhVC1VYAgFvUgtSWAIBZksPS24CAWVeCZkBEQIBSWURexkCAS2DARGVARkCARF3GXeMAQIBD6gBC6gBTwIBA2IRYmICAVeAARGAAWcCAUtnFXIeAgEwhQEVkAEeAgEUbxtveQIBPWobamcCATGNARuNAXkCASGIARuIAWcCARU=</sads:DebugSymbol.Symbol>
+    </Sequence>
+  </e:eMosWF.Implementation>
+</e:eMosWF>

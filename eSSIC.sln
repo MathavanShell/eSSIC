@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eSSIC", "eSSIC\eSSIC.csproj", "{50AC3549-650C-4F23-9E79-E7020E87585A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMosWF", "eMosWF\eMosWF.csproj", "{2FCFACF4-D1DC-4519-987B-3DCA619DED77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50AC3549-650C-4F23-9E79-E7020E87585A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50AC3549-650C-4F23-9E79-E7020E87585A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50AC3549-650C-4F23-9E79-E7020E87585A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50AC3549-650C-4F23-9E79-E7020E87585A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FCFACF4-D1DC-4519-987B-3DCA619DED77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FCFACF4-D1DC-4519-987B-3DCA619DED77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FCFACF4-D1DC-4519-987B-3DCA619DED77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FCFACF4-D1DC-4519-987B-3DCA619DED77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {012A0FBE-F611-4795-B508-C5A56C8C52C0}
+	EndGlobalSection
+EndGlobal

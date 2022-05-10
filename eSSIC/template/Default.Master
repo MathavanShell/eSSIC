@@ -1,0 +1,183 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="eSSIC.SiteMaster" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8" http-equiv="Content-Type" content="text/html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../App_Themes/baseObjects/favicon.ico" type="image/x-icon" />
+    <title></title>
+    <!-- Default Scripts -->
+    <link href="../App_Themes/aFonts/fontawesome.css" rel="stylesheet" type="text/css" />
+    <link href="../App_Themes/mFonts/materialicons.css" rel="stylesheet" type="text/css" />
+    <link href="../App_Themes/Calendar/Calendar.css" rel="stylesheet" type="text/css" />
+    <link href="../App_Themes/default.css" rel="stylesheet" type="text/css" />
+    <link href="../App_Themes/w3.css" rel="stylesheet" type="text/css" />
+    <!-- Editable Header -->   
+    <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="maxHeight">
+    <asp:Table runat="server" Height="100%" CellPadding="0">
+        <asp:TableRow VerticalAlign="Top">
+            <asp:TableCell>
+                <form id="basePrimary" runat="server">
+                <asp:Panel ID="loaderPanel" runat="server"><div id="loadProgress" class="w3-modal" style="display:block;" align="center"><div class="w3-card-8 w3-loader w3-circle w3-center" style="position:relative;top:calc(50vh - 150px);"></div></div></asp:Panel>
+                <script type="text/javascript">
+                    $(window).on("load", function () { $("#loadProgress").fadeOut("fast"); });
+                </script>
+                <asp:ScriptManager ID="scMgr" runat="server" EnablePageMethods="true" >
+                    <Scripts>
+                        <asp:ScriptReference Path="~/Scripts/jquery-3.3.1.js" />
+                        <asp:ScriptReference Path="~/Scripts/default.js" />
+                    </Scripts>
+                </asp:ScriptManager>
+                    <!-- Mobile View Left Side Menu -->
+                    <asp:UpdatePanel ID="mobileUP" runat="server"><ContentTemplate>
+                    <div id="sideNav" class="sideNavMenu w3-small w3-white">
+                        <div class="sideNavTopBar">
+                            <div Style="width:5%"><span class="material-icons sideNavTopIcon">account_circle</span></div>
+                            <div Style="width:90%"><asp:label ID="sideNavUsrLbl" runat="server" CssClass="sideNavTopLabel"/></div>
+                            <div Style="width:5%"><span class="material-icons sideNavCloseBtn" onclick="closeSideNav('LEFT');">close</span></div>
+                        </div>
+	                    <div class="w3-accordion">
+	                    <div id="sideNavBtn0" class="sideNavMenuBtn" Style="border-top:none;" onClick="expand_subList('1');">
+                            <asp:Label runat="server" Text="Options"/>
+                            <asp:Label ID="sideNavExpInd1" runat="server" CssClass="material-icons sideNavExpInd" Text="expand_more"/></div>
+                            <div id="sideNavList1" class="w3-accordion-content w3-show" style="margin:8px 0px 20px 0px;">
+                              <div class="sideNavMenuSubItem"><asp:Label runat="server" id="sideNavList1Btn1Icon" CssClass="material-icons sideNavMenuSubItemIcon" Text="get_app" Visible="false" />
+                              <asp:Button ID="sideNavList1Btn1" runat="server" CssClass="sideNavMenuSubItemBtn" Text="Export to CSV" Visible="false"/></div>
+                              <div class="sideNavMenuSubItem"><asp:Label runat="server" id="sideNavList1Btn2Icon" CssClass="material-icons sideNavMenuSubItemIcon" Text="print" Visible="false"/>
+                              <asp:Button ID="sideNavList1Btn2" runat="server" CssClass="sideNavMenuSubItemBtn" Text="Print to PDF" Visible="false"/></div>
+                              <div class="sideNavMenuSubItem"><asp:Label runat="server" id="sideNavList1Btn3Icon" CssClass="material-icons sideNavMenuSubItemIcon" Text="lock_outline" Visible="false"/>
+                              <asp:Button ID="sideNavList1Btn3" runat="server" OnClick="SetUnlockStatus" CommandName="locked" CssClass="sideNavMenuSubItemBtn" Text="Unlock to Edit" Visible="false"/></div>
+                            </div>
+	                    </div>
+	                    <asp:Button ID="sideNavBtn4" Text="Approval" runat="server" OnClick="ReDirectURL" OnClientClick="closeSideNav('LEFT');" CssClass="sideNavMenuBtn" Width="100%" Visible="false" Enabled="false"/>
+                        <asp:Button ID="sideNavBtn1" Text="Dashboard" runat="server" OnClick="ReDirectURL" OnClientClick="closeSideNav('LEFT');" CssClass="sideNavMenuBtn" Width="100%" Visible="false" Enabled="true"/>
+	                    <asp:Button ID="sideNavBtn2" Text="Manage" runat="server" OnClick="ReDirectURL" OnClientClick="closeSideNav('LEFT');" CssClass="sideNavMenuBtn" Width="100%" Visible="false" Enabled="true"/>
+                        <asp:Button ID="sideNavBtn3" Text="Monitor" runat="server" OnClick="ReDirectURL" OnClientClick="closeSideNav('LEFT');" CssClass="sideNavMenuBtn" Width="100%" Visible="false" Enabled="true"/>
+                        <asp:Button ID="sideNavBtn5" Text="Report" runat="server" OnClick="ReDirectURL" OnClientClick="closeSideNav('LEFT');" CssClass="sideNavMenuBtn" Width="100%" Visible="false" Enabled="true"/>
+                        <asp:Button ID="sideNavSetBtn" Text="Settings" runat="server" OnClick="ReDirectURL" OnClientClick="closeSideNav('LEFT');" CssClass="sideNavMenuBtn sideNavMenuEnd" Width="100%" Visible="true" Enabled="true"/>
+                    </div>
+                    <div id="sideNavOverlay" class="w3-overlay w3-animate-opacity" style="cursor:pointer;" onClick="closeSideNav('ALL')"></div>
+                    <!-- Desktop View Right Side Menu -->
+                    <div id="sideNavAlt" class="sideNavMenuAlt w3-small w3-white">
+                        <asp:Table ID="profileMenu" runat="server">
+                            <asp:TableRow VerticalAlign="Middle">
+                                <asp:TableCell ColumnSpan="3" CssClass="mainTopProfileHeader">
+                                    <asp:Label ID="usrIcon" runat="server" CssClass="material-icons" Style="font-size:32px" Text="person_pin" />
+                                    <asp:LoginName runat="server" CssClass="mainUserLabelAlt" Style="width:140px;position:absolute;top:11px;left:50px" />
+                                    <asp:Label runat="server" CssClass="sideNavCloseBtn" style="position:absolute;top:3px;right:10px" Text="&times;" onclick="closeSideNav('RIGHT');" Visible="false" />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow VerticalAlign="middle">
+                                <asp:TableCell Width="18" RowSpan="5"></asp:TableCell>
+                                <asp:TableCell></asp:TableCell>
+                                <asp:TableCell Width="15" RowSpan="5"></asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow><asp:TableCell Height="5" ColumnSpan="3"></asp:TableCell></asp:TableRow>
+                            <asp:TableRow VerticalAlign="Top" Height="35">
+                                <asp:TableCell CssClass="mainTopProfileRow"><asp:LinkButton runat="server" OnClick="ResetPassword" CssClass="mainTopProfileLink" Text="Change Password" /></asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell CssClass="mainTopProfileRow"><asp:LinkButton runat="server" OnClick="SwitchProfile" CssClass="mainTopProfileLink" Text="Switch Profile" /></asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell CssClass="mainTopProfileRow"><asp:LinkButton runat="server" OnClick="SignOut" CssClass="mainTopProfileLink" Text="Sign Out" /></asp:TableCell>
+                            </asp:TableRow>
+                        </asp:Table>
+                    </div>
+                    </ContentTemplate></asp:UpdatePanel>
+                    <!-- To-Top Anchor -->
+                    <a name="top"></a>
+                    <asp:UpdatePanel ID="searchUP" runat="server"><ContentTemplate>
+                    <!-- Mobile View Top Bar -->
+                    <div class="mobileTopBar w3-hide-large">
+                        <div class="w3-top mobileMenuBar">
+                            <asp:Label ID="openNav" runat="server" CssClass="w3-opennav material-icons mobileMenuBtn" onClick="openSideNav('LEFT')" Text="menu"/>
+                            <div class="mobileSearchBar">
+                                <asp:TextBox ID="mobileSearch" runat="server" CssClass="mobileSearchField" AutoPostBack="true" onchange="replicateSearchPara(2);" Placeholder="Search"/>
+                                <asp:Button ID="mobileFilterBtn" runat="server" CssClass="material-icons mobileFilterBtn" Text="tune" ToolTip="Filters" Visible="false" onClientClick="triggerFilterMenu($('#MainContent_filterMenu').attr('class'));return false;"/>
+                                <asp:Button ID="mobileSearchBtn" runat="server" CssClass="material-icons mobileSearchBtn" Text="search" OnClientClick="replicateSearchPara(2);"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Desktop View Top Bar -->
+                    <div class="mainTopBar w3-hide-small w3-hide-medium">
+                        <asp:Label ID="noticeLbl" runat="server" CssClass="mainNoticeBar" Text="SSIC MOS" Visible="false"/>                        
+                        <asp:Button ID="settingBtn" runat="server" OnClick="ReDirectURL" CssClass="material-icons mainTopSetting" Text="settings" ToolTip="Settings"/>                       
+
+                        <asp:LoginView runat="server">
+                            <AnonymousTemplate>
+                                <asp:LinkButton runat="server" OnClick="SignIn" CssClass="mainUserSignIn" Text="Sign In" />
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                                <asp:Button ID="accessBtn" runat="server" OnClick="ReDirectURL" CssClass="material-icons mainTopProfile" Text="people" ToolTip="Access"/>
+                                <asp:LoginName runat="server" CssClass="mainUserLabel" onclick="openSideNav('RIGHT')" />
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                    </div>
+                    <!-- Desktop View Main Bar -->
+                    <div id="subMenuLarge" class="mainNavBarRoot w3-hide-small w3-hide-medium">
+                        <div class="mainNavBarLogo"><asp:Image runat="server" ImageUrl="~/App_Themes/baseObjects/Shell_logo_r1.png"/></div>
+                        <div class="mainNavBarLeft">
+                            <div class="w3-card mainSearchBar" style="border-right: 1px solid transparent;">
+                                <asp:TextBox ID="search" runat="server" Width="100%" CssClass="mainSearchField" AutoPostBack="true" onchange="replicateSearchPara(1);" Placeholder="Search"/>
+                            </div>
+                            <asp:Button ID="searchBtn" runat="server" OnClientClick="replicateSearchPara(1);" CssClass="material-icons mainSearchIcon" Text="search" ToolTip="Search"/>
+<%--                            <asp:Button ID="searchExport" runat="server" CssClass="material-icons mainSearchExpBtn" Text="get_app" ToolTip="Export to CSV" Visible="false" Enabled="false"/>
+                            <asp:Button ID="printPdf" runat="server" CssClass="material-icons mainPrintPdfBtn" Text="print" ToolTip="Print to PDF" Visible="false" Enabled="false"/>--%>
+                            <asp:Button ID="unlockReport" runat="server" CssClass="material-icons mainUnlockRptBtn" Text="lock_outline" OnClick="SetUnlockStatus" CommandName="locked" Visible="false" Enabled="false"/>
+                        </div>
+                        <div class="mainNavBarRight">
+                            <asp:Button ID="mainBtn4" runat="server" OnClick="ReDirectURL" CssClass="mainNavBarMenuBtn" Text="Approval" Visible="false" Enabled="false"/>                            
+                            <asp:Button ID="mainBtn1" runat="server" OnClick="ReDirectURL" CssClass="mainNavBarMenuBtn" Text="Dashboard" Visible="false" Enabled="true"/>
+                            <asp:Button ID="mainBtn2" runat="server" OnClick="ReDirectURL" CssClass="mainNavBarMenuBtn" Text="Manage" Visible="false" Enabled="true"/>
+                            <asp:Button ID="mainBtn3" runat="server" OnClick="ReDirectURL" CssClass="mainNavBarMenuBtn" Text="Monitor" Visible="false" Enabled="true"/>
+                            <asp:Button ID="mainBtn5" runat="server" OnClick="ReDirectURL" CssClass="mainNavBarMenuBtn" Text="Report" Visible="false" Enabled="true"/> 
+                        </div>
+                    </div>
+                    </ContentTemplate></asp:UpdatePanel>
+                    <!-- Main Content Section -->
+                    <div align="center">
+                        <div align="left" class="mainContent w3-container" style="padding-top:20px">
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                            <footer>
+                                <a href="#top"><div id="toTopBtn" class="toTopButton"></div></a>
+                            </footer>
+                        </div>                       
+
+                        <asp:Table ID="accessDenied" runat="server" Height="60" HorizontalAlign="Center" CssClass="w3-card-8 w3-round-large" style="background-color:#FBFAF7;display:none">
+                            <asp:TableRow>
+                                <asp:TableCell Width="70" RowSpan="2" HorizontalAlign="Center" VerticalAlign="Middle"><asp:Label runat="server" CssClass="material-icons" Text="block" Style="font-size:40px;font-weight:bold;color:#d12020;opacity:0.7;padding-top:2px;" /></asp:TableCell>
+                                <asp:TableCell Height="30" VerticalAlign="Bottom" Style="position:relative;padding-bottom:2px;"><asp:Label runat="server" Text="Access Denied"  CssClass="w3-medium w3-text-grey" Style="font-weight:bold;" /></asp:TableCell>
+                                <asp:TableCell Width="110" RowSpan="2" HorizontalAlign="Right" VerticalAlign="Middle" Style="padding-right:15px">
+                                    <asp:Button ID="closeDeniedMPE" runat="server" CssClass="altButton" Text="Dismiss" Style="margin:2px;" OnClientClick="dismissPromptStatus('1');return false;"/>
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell VerticalAlign="Top"><asp:Label ID="deniedDesc" runat="server" CssClass="w3-text-grey" Style="font-size:12px;padding-top:1px;" /></asp:TableCell>
+                            </asp:TableRow>
+                        </asp:Table>
+                        <ajax:ModalPopupExtender ID="accessDeniedMPE" runat="server" BackgroundCssClass="modalBackground" TargetControlID="accessDeniedBtn" PopupControlID="accessDenied" CancelControlID="closeDeniedMPE"/>
+                        <asp:Button ID="accessDeniedBtn" runat="server" Text="dummy1" style="display:none" />
+                   
+                    </div>        
+                </form>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow VerticalAlign="Top" Height="100">
+            <asp:TableCell>
+                <div align="center">
+                    <div align="left" class="w3-container w3-padding-8 mainContent">
+                        <hr />    
+                        <p class="w3-text-grey">&copy; <%: DateTime.Now.Year %>&nbsp;&nbsp;SSIC-MOS</p>                    
+                    </div>
+                </div>
+            </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
+</body>
+</html>

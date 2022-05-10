@@ -1,0 +1,2 @@
+MosWF.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

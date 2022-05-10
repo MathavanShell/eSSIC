@@ -1,0 +1,21 @@
+<asp:SqlDataSource id="mosPendingDS" runat="server" DataSourceMode="DataSet" 
+        SelectCommand="SELECT a.*, CAST(a.reqTimestamp as date) as reqDate, CAST(a.reqTimestamp as smalldatetime) as reqTime, b.statusDesc FROM form_mos a LEFT OUTER JOIN adm_list_status b ON b.statusCode=a.curState WHERE reqStatus=1 AND (@userRole=1 AND curState IN (5,9)) OR (@userRole=5 AND curState IN (6,7)) OR (@userRole NOT IN (1,5) AND curState=@userRole) ORDER BY curState,reqDate DESC" 
+        ConnectionString="<%$ ConnectionStrings:dataReadStr%>" ProviderName="<%$ ConnectionStrings:dataReadStr.ProviderName%>">
+        <SelectParameters>
+            <asp:ControlParameter ConvertEmptyStringToNull="False" DefaultValue="0" PropertyName="Value" Name="userRole" ControlID="userRole" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource id="mosPassDS" runat="server" DataSourceMode="DataSet" 
+        SelectCommand="SELECT a.*, CAST(a.reqTimestamp as date) as reqDate, CAST(a.reqTimestamp as smalldatetime) as reqTime, b.statusDesc FROM form_mos a LEFT OUTER JOIN adm_list_status b ON b.statusCode=a.curState WHERE reqStatus=1 AND NOT (@userRole=1 AND curState IN (5,9)) AND NOT (@userRole=5 AND curState IN (6,7)) AND curState > @userRole AND curState NOT IN (0,10) ORDER BY curState,reqDate DESC" 
+        ConnectionString="<%$ ConnectionStrings:dataReadStr%>" ProviderName="<%$ ConnectionStrings:dataReadStr.ProviderName%>">
+        <SelectParameters>
+            <asp:ControlParameter ConvertEmptyStringToNull="False" DefaultValue="0" PropertyName="Value" Name="userRole" ControlID="userRole" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource id="mosArchiveDS" runat="server" DataSourceMode="DataSet" 
+        SelectCommand="SELECT a.*, CAST(a.reqTimestamp as date) as reqDate, CAST(a.reqTimestamp as smalldatetime) as reqTime, b.statusDesc FROM form_mos a LEFT OUTER JOIN adm_list_status b ON b.statusCode=a.curState WHERE reqStatus=1 AND curState IN (0,10) ORDER BY curState,reqDate DESC" 
+        ConnectionString="<%$ ConnectionStrings:dataReadStr%>" ProviderName="<%$ ConnectionStrings:dataReadStr.ProviderName%>">
+        <SelectParameters>
+            <asp:ControlParameter ConvertEmptyStringToNull="False" DefaultValue="0" PropertyName="Value" Name="userRole" ControlID="userRole" />
+        </SelectParameters>
+    </asp:SqlDataSource>

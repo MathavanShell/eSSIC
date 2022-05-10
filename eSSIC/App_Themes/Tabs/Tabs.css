@@ -1,0 +1,85 @@
+.ajax__tab_xp1 .ajax__tab_header {
+	font-family:verdana,tahoma,helvetica;
+	padding-left: 20px; /*padding to the left of the tabs*/
+	padding-right: 20px; /*padding to the right minus 3px spacing*/
+}
+.ajax__tab_xp1 .ajax__tab_body {
+	font-family:verdana,tahoma,helvetica;
+	background-color: #FBFAF7;
+	font-size:10pt;
+	padding-top: 0px; /*Spacing after horizontal line*/
+	border-top: 1px solid #ED7D31;
+	border-radius: 0px 0px 0px 0px;
+}
+/*ORIGINAL*/
+.ajax__tab_xp1 .ajax__tab_tab {
+	height: 30px; /*tab height*/
+	font-size: 13px; /*tab text size*/
+	padding: 6px 12px;  /*padding aroung text - Top/Right/Bottom/Left*/
+	margin-bottom: -2px;
+	color: #047BBB; /*tab text color*/
+	background-color: #F3F3F3; /*F19C63 - active tab color*/
+	border-top: 1px solid #CDCDCD;	
+	border-left: 1px solid #CDCDCD;
+	border-right: 1px solid #CDCDCD;
+	border-bottom: 1px solid transparent;
+	border-radius: 7px 7px 0px 0px;
+	transition: 0.3s;	
+}
+.ajax__tab_xp1 .ajax__tab_inner {
+	padding-left:0px; /*to display left image*/
+}
+.ajax__tab_xp1 .ajax__tab_outer {
+	padding-right:3px; /*to display right image*/
+}
+/*HOVER*/
+.ajax__tab_xp1 .ajax__tab_hover .ajax__tab_tab {
+	height:33px;
+	cursor:pointer;
+	margin-bottom:-5px;
+	color:#E93F14;
+	background-color: #FBFAF7;
+	border-top: 1px solid #ED7D31;
+	border-left: 1px solid #ED7D31;
+	border-right: 1px solid #ED7D31;
+	border-bottom: 2px solid #FBFAF7;
+	transition: 0.2s;
+	/*color: #FFFFFF;
+	background-color: #ED7D31;
+	border-top: 1px solid #ED7D31;	
+	border-left: 1px solid #ED7D31;
+	border-right: 1px solid #ED7D31;
+	border-bottom: 2px solid #ED7D31;*/
+}
+.ajax__tab_xp1 .ajax__tab_hover .ajax__tab_inner {
+	cursor:pointer;
+}
+.ajax__tab_xp1 .ajax__tab_hover .ajax__tab_outer {
+	cursor:pointer;
+}
+/*SELECTED*/
+.ajax__tab_xp1 .ajax__tab_active .ajax__tab_tab {
+	height:33px;
+	cursor: default;
+	margin-bottom:-5px;
+	color: #E93F14;
+	background-color:#FBFAF7;
+	border-top:1px solid #ED7D31;
+	border-left:1px solid #ED7D31;
+	border-right:1px solid #ED7D31;
+	border-bottom:2px solid #FBFAF7;
+}
+.ajax__tab_xp1 .ajax__tab_active .ajax__tab_inner {
+	/*background:url(tab-active-left.gif) no-repeat;*/
+}
+.ajax__tab_xp1 .ajax__tab_active .ajax__tab_outer {
+	/*background:url(tab-active-right.gif) no-repeat right;*/
+}
+/*DISABLED*/
+.ajax__tab_xp1 .ajax__tab_disabled {
+	 color: #A0A0A0;
+}
+
+/* ========= CUSTOM FORMATING =========== */
+/*.ajax__tab_xp1 .ajax__tab_header :nth-child(5) {float:right;}*/
+

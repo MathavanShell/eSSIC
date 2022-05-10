@@ -1,0 +1,15 @@
+﻿Installing assembly 'C:\Apps\eSsicMosAgent\eMosAgent.exe'.
+Affected parameters are:
+   logtoconsole = 
+   i = 
+   assemblypath = C:\Apps\eSsicMosAgent\eMosAgent.exe
+   logfile = C:\Apps\eSsicMosAgent\eMosAgent.InstallLog
+Installing service eMosAgent...
+Service eMosAgent has been successfully installed.
+Creating EventLog source eMosAgent in log eSSIC MOS System Log...
+Committing assembly 'C:\Apps\eSsicMosAgent\eMosAgent.exe'.
+Affected parameters are:
+   logtoconsole = 
+   i = 
+   assemblypath = C:\Apps\eSsicMosAgent\eMosAgent.exe
+   logfile = C:\Apps\eSsicMosAgent\eMosAgent.InstallLog

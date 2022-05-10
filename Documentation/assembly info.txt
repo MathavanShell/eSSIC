@@ -1,0 +1,1 @@
+Sys.Net.WebServiceFailedException: The server method 'SearchMosTag' failed with the following error: System.IO.FileNotFoundException-- Could not load file or assembly 'OSIsoft.PI.Configuration, Version=2.0.2.0, Culture=neutral, PublicKeyToken=c3309f0734ba2805' or one of its dependencies. The system cannot find the file specified.

@@ -1,0 +1,7 @@
+64bit
+
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe
+
+32bit
+
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe

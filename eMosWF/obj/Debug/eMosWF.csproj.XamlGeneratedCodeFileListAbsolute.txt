@@ -1,0 +1,4 @@
+obj\Debug\_eMosWF.g.cs
+obj\Debug\MosWF.g.cs
+obj\Debug\eMosWF_MosWF_BeforeInitializeComponentHelper.cs
+C:\Users\M.Chandrasegaram\Documents\testing\source\source\repos\eSSIC\eMosWF\obj\Debug\eMosWF_MosWF_CompiledExpressionRoot.cs

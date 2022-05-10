@@ -1,0 +1,41 @@
+.ajax__calendar_xp .ajax__calendar_container {padding:4px;cursor:default;width:100%;font-size:11px;text-align:center;font-family:tahoma,verdana,helvetica;}
+.ajax__calendar_xp .ajax__calendar_body {position:relative;overflow:hidden;margin:auto;}
+.ajax__calendar_xp .ajax__calendar_days, .ajax__calendar_months, .ajax__calendar_years {text-align:center;font-weight:normal;}
+.ajax__calendar_xp .ajax__calendar_container TABLE {padding:0px;margin:0px;font-size:11px;}
+.ajax__calendar_xp .ajax__calendar_container TD {padding:0px;margin:0px;font-size:11px;}
+.ajax__calendar_xp .ajax__calendar_header {height:24px;width:100%;}
+.ajax__calendar_xp .ajax__calendar_footer {height:20px;}
+.ajax__calendar_xp .ajax__calendar_prev {border:solid 1px #999999;border-width:1px 0px 1px 1px;background-color:#F7F7F7;cursor:pointer;height:19px;width:18px;float:left;background-repeat:no-repeat;background-position:50% 50%;background-image:url(arrow-left.gif);}
+.ajax__calendar_xp .ajax__calendar_next {border:solid 1px #999999;border-width:1px 1px 1px 0px;background-color:#F7F7F7;cursor:pointer;height:19px;width:18px;float:right;background-repeat:no-repeat;background-position:50% 50%;background-image:url(arrow-right.gif);}
+.ajax__calendar_xp .ajax__calendar_title {border:solid 1px #999999;border-width:1px 0px 1px 0px;background-color:#F7F7F7;cursor:pointer;height:19px;margin:0px 18px 0px 18px;padding-top:1px;font-weight:bold;}
+
+.ajax__calendar_xp .ajax__calendar_today {cursor:pointer;padding-top:3px;font-weight:normal;}
+.ajax__calendar_xp .ajax__calendar_dayname {height:17px;width:100%;text-align:center;font-weight:bold;}
+.ajax__calendar_xp .ajax__calendar_day {height:20px;width:100%;text-align:center;cursor:pointer;overflow:hidden;padding-top:2px;}
+.ajax__calendar_xp .ajax__calendar_month {height:44px;width:100%;text-align:center;cursor:pointer;overflow:hidden;}
+.ajax__calendar_xp .ajax__calendar_year {height:44px;width:100%;text-align:center;cursor:pointer;overflow:hidden;}
+
+.ajax__calendar_xp .ajax__calendar_container {border:1px solid #646464;background-color:#ffffff;color:#000000;}
+.ajax__calendar_xp .ajax__calendar_footer {border-top:1px solid #f5f5f5;}
+.ajax__calendar_xp .ajax__calendar_title {color:#333333;}
+.ajax__calendar_xp .ajax__calendar_dayname {color:#333333;}
+.ajax__calendar_xp .ajax__calendar_day {background-color: #D2E7FB;border:1px solid #D2E7FB;}
+.ajax__calendar_xp .ajax__calendar_month {background-color: #D2E7FB;border:1px solid #ffffff;}
+.ajax__calendar_xp .ajax__calendar_year {background-color: #D2E7FB;border:1px solid #ffffff;}
+
+.ajax__calendar_xp .ajax__calendar_active .ajax__calendar_day {background-color:#edf9ff;border-color:#0066cc;color:#0066cc;}
+.ajax__calendar_xp .ajax__calendar_active .ajax__calendar_month {background-color:#edf9ff;border-color:#0066cc;color:#0066cc;}
+.ajax__calendar_xp .ajax__calendar_active .ajax__calendar_year {background-color:#edf9ff;border-color:#0066cc;color:#0066cc;}
+
+.ajax__calendar_xp .ajax__calendar_other .ajax__calendar_day {background-color: #FFFFFF; border-color: #FFFFFF;color: #C0C0C0;}
+.ajax__calendar_xp .ajax__calendar_other .ajax__calendar_year {background-color: #FFFFFF;color:#646464;}
+
+.ajax__calendar_xp .ajax__calendar_hover .ajax__calendar_day {background-color: #FFCC00;border-color: #FF9900;}
+.ajax__calendar_xp .ajax__calendar_hover .ajax__calendar_month {background-color: #FFCC00;border-color: #FF9900;color: #000000;}
+.ajax__calendar_xp .ajax__calendar_hover .ajax__calendar_year {background-color: #FFCC00;border-color: #FF9900;color: #000000;}
+
+.ajax__calendar_xp .ajax__calendar_hover .ajax__calendar_title {background-color:#FFCC00;}
+.ajax__calendar_xp .ajax__calendar_hover .ajax__calendar_today {background-color:#FFCC00;}
+
+.ajax__calendar_xp .ajax__calendar_hover .ajax__calendar_prev {background-color:#FFCC00;}
+.ajax__calendar_xp .ajax__calendar_hover .ajax__calendar_next {background-color:#FFCC00;}

@@ -1,0 +1,7 @@
+lut-s-6056
+
+Port: 5457
+DB: Shell
+ID: e8b10e52-d81b-40ed-8cab-f35d990fbd45
+
+https://docs.microsoft.com/en-us/dotnet/framework/windows-workflow-foundation/how-to-create-a-workflow-service-that-consumes-an-existing-service-contract

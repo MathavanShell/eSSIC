@@ -1,0 +1,2 @@
+obj\Debug\MosWF.g.xaml
+obj\Debug\eMosWF_MosWF_BeforeInitializeComponentHelper.txt
